@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 void main(){
- runApp(MyQuizApp());
+ runApp(MyApp());
 }
 
-class MyQuizApp extends StatelessWidget{
+class MyApp extends StatelessWidget{
   Widget build(BuildContext context){
       return MaterialApp(home: Text('Hi I`m Paul'),);
    }
