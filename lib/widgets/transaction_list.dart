@@ -11,57 +11,65 @@ class TransactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     var trans = List.generate(transactions.length, (index) => 
               Card(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                  Container(
-                    
-                    margin: EdgeInsets.symmetric(
-                      vertical: 10,
-                      horizontal: 15,
-                    ),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Theme.of(context).primaryColor,
-                        width: 2,
-                      ),
-                    ),
-                    padding: EdgeInsets.all(10),
-                    child: Text(
-                      '\$${transactions[index].amount.toStringAsFixed(2)}',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Theme.of(context).primaryColor,
-                      ),
-                      ),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                child: SingleChildScrollView(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                    Text(
-                      transactions[index].title,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
+                    Container(                    
+                      margin: EdgeInsets.symmetric(
+                        vertical: 10,
+                        horizontal: 15,
                       ),
-                    ),
-                    Text(
-                      DateFormat.yMMMMEEEEd().format(transactions[index].date),
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ]),
-                 Container(                  
-                  child: IconButton(
-                          color: Colors.red,
-                          icon: Icon(Icons.delete_outline), 
-                          onPressed: () => delete(transactions[index].id),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Theme.of(context).primaryColor,
+                          width: 2,
                         ),
-                 ), 
-                ],),
+                      ),
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                        '\$${transactions[index].amount.toStringAsFixed(2)}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                        ),
+                    ),
+                    // ListTile(
+                    //     //title: Text(transactions[index].title),
+                    //     leading: CircleAvatar(
+                    //       radius: 20, 
+                    //       child: Text('\$${transactions[index].amount.toStringAsFixed(2)}'),
+                    //       ),
+                    // ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                      Text(
+                        transactions[index].title,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      ),
+                      Text(
+                        DateFormat.yMMMMEEEEd().format(transactions[index].date),
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ]),
+                   Container(                  
+                    child: IconButton(
+                            color: Colors.red,
+                            icon: Icon(Icons.delete_outline), 
+                            onPressed: () => delete(transactions[index].id),
+                          ),
+                   ), 
+                  ],),
+                ),
               ),
             );
      if (transactions.length == 0) {
