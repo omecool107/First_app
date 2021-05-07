@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:first_app/widgets/chart.dart';
 import 'package:first_app/widgets/new_transactions.dart';
 import 'package:first_app/widgets/transaction_list.dart';
@@ -160,7 +162,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                   Text('Show Chart',
                   style: themeOf.textTheme.title,),
-                  Switch(
+                  Switch.adaptive(
                     activeColor: themeOf.primaryColor,
                     value: showChart, 
                     onChanged: (val){
