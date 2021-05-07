@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         cardTheme: CardTheme(color: Colors.black),
         fontFamily: 'Quicksand',
-              
+        textTheme: TextTheme(title: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),     
       ),
       home: MyHomePage(),
     );
