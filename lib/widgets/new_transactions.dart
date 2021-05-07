@@ -25,7 +25,7 @@ class _NewTransactionsState extends State<NewTransactions> {
         enteredTitle, 
         enteredAmount,
         selectecDate,
-        enteredAmount*(selectecDate.day.toDouble())*(DateTime.now().millisecond.toDouble()),
+        enteredAmount*(selectecDate.day.toDouble())*(DateTime.now().microsecond.toDouble()),
     );    
     Navigator.of(context).pop();
   }
@@ -46,11 +46,17 @@ class _NewTransactionsState extends State<NewTransactions> {
 
   @override
   Widget build(BuildContext context) {
+    var mediaQuery = MediaQuery.of(context);
     return SingleChildScrollView(
             child:Card(
             elevation: 0,
             child: Container(
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.only(
+                left: 10,
+                right: 10,
+                top: 10,
+                bottom: mediaQuery.viewInsets.bottom + 10,
+                ),
               child: Column(
                 children: <Widget>[
                   Padding(

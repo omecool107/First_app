@@ -9,6 +9,7 @@ class TransactionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var mediaQuery = MediaQuery.of(context);
     var trans = List.generate(transactions.length, (index) => 
                   Card(
                     elevation: 6,          
@@ -25,11 +26,18 @@ class TransactionList extends StatelessWidget {
                       subtitle: Text(DateFormat.yMMMMEEEEd().format(transactions[index].date),
                                      style: TextStyle(fontSize: 12, color: Colors.grey)
                                      ),
-                      trailing: IconButton(
-                            color: Colors.red,
-                            icon: Icon(Icons.delete_outline), 
-                            onPressed: () => delete(transactions[index].id),
-                          ),
+                      trailing: mediaQuery.size.width < 400 ?
+                                (IconButton(
+                                  color: Colors.red,
+                                  icon: Icon(Icons.delete_outline), 
+                                  onPressed: () => delete(transactions[index].id),
+                                ))
+                                : (  FlatButton.icon(
+    textColor: Colors.red,
+    icon: Icon(Icons.delete_outline),
+    onPressed: () => delete(transactions[index].id),
+    label: Text('Delete')
+  )),
                     ),
                   ),
             );

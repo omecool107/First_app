@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.amber,
         primarySwatch: Colors.amber,
+        accentColor: Colors.amber,
         brightness: Brightness.dark,
         cardTheme: CardTheme(color: Colors.black),
         fontFamily: 'Quicksand',
@@ -37,49 +38,49 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
     final List<Transaction> usertransactions = [
       Transaction(
-      id: 'T1', 
+      id: ((42.69)*(DateTime.now().day.toDouble())*(DateTime.now().microsecond.toDouble())).toString(), 
       title: 'New Jacket',
       amount: 42.69,
       date: DateTime.now()
       ),
     Transaction(
-      id: 'T3', 
+      id: ((77.49)*(DateTime.now().day.toDouble())*(DateTime.now().microsecond.toDouble())).toString(), 
       title: 'New Boots',
       amount: 77.49,
       date: DateTime.now()
       ),
       Transaction(
-      id: 'T4', 
+      id: ((42.69)*(DateTime.now().day.toDouble())*(DateTime.now().microsecond.toDouble())).toString(), 
       title: 'New Jacket',
       amount: 42.69,
       date: DateTime.now()
       ),
     Transaction(
-      id: 'T5', 
+      id: ((77.49)*(DateTime.now().day.toDouble())*(DateTime.now().microsecond.toDouble())).toString(), 
       title: 'New Boots',
       amount: 77.49,
       date: DateTime.now()
       ),
       Transaction(
-      id: 'T6', 
+      id: ((42.69)*(DateTime.now().day.toDouble())*(DateTime.now().microsecond.toDouble())).toString(), 
       title: 'New Jacket',
       amount: 42.69,
       date: DateTime.now()
       ),
     Transaction(
-      id: 'T7', 
+      id: ((77.49)*(DateTime.now().day.toDouble())*(DateTime.now().microsecond.toDouble())).toString(), 
       title: 'New Boots',
       amount: 77.49,
       date: DateTime.now()
       ),
       Transaction(
-      id: 'T7', 
+      id: ((42.69)*(DateTime.now().day.toDouble())*(DateTime.now().microsecond.toDouble())).toString(), 
       title: 'New Jacket',
       amount: 42.69,
       date: DateTime.now()
       ),
     Transaction(
-      id: 'T8', 
+      id: ((77.49)*(DateTime.now().day.toDouble())*(DateTime.now().microsecond.toDouble())).toString(), 
       title: 'New Boots',
       amount: 77.49,
       date: DateTime.now()
@@ -131,13 +132,13 @@ class _MyHomePageState extends State<MyHomePage> {
         ),),
         actions: [
           IconButton(           
-            icon: Icon(Icons.add, color: Colors.black,), 
+            icon: Icon(Icons.add, color: Colors.black), 
             onPressed: ()  => startTransactionLog(context),
             ),
         ],
       );
-    var trueHeight = 
-    (mediaQuery.size.height) - mediaQuery.padding.top - appBar.preferredSize.height;
+    var trueHeight = (mediaQuery.size.height) - mediaQuery.padding.top - appBar.preferredSize.height;
+    
     var chartContainer = Container(
               height: 
                  mediaQuery.orientation == Orientation.portrait ?  
@@ -154,7 +155,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 (trueHeight * 0.63)) ,
               child: TransactionList(usertransactions, deleteTransaction)
               );
-    var switchContainer = Row(              
+    var switchRow = Row(              
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                   Text('Show Chart',
@@ -169,19 +170,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     ),
             ],);
-    var body = Column(           
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[            
-            Container(
-              height: 40,
-              child: switchContainer),
-            ],
-        );
-    if (mediaQuery.orientation == Orientation.portrait){
-      body.children.removeAt(0);
+    var switchContainer = Container(height: 40, child: switchRow);
+    
+    var body = Column(children: <Widget>[]);
+    
+    if (mediaQuery.orientation == Orientation.portrait){      
       body.children.add(chartContainer);
       body.children.add(listContainer);
     }else{
+      body.children.add(switchContainer);
       if(showChart){body.children.add(chartContainer);}
       else{body.children.add(listContainer);}      
     }
@@ -189,8 +186,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: appBar,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: themeOf.primaryColor,        
+      floatingActionButton: FloatingActionButton(       
         child: Icon(Icons.card_membership),
         onPressed: ()  => startTransactionLog(context),
       ),

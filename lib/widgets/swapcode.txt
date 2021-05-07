@@ -125,3 +125,17 @@ Container(
   //   DeviceOrientation.landscapeLeft,
   //   DeviceOrientation.landscapeRight,
   // ]);
+  FlatButton(
+    color: Colors.red
+    icon: Icon(Icons.delete_outline),
+    onPressed: () => delete(transactions[index].id),
+    title: Text('Delete')
+  )
+                                  child: Row(
+                                    children: [
+                                      , ),
+                                      , style: TextStyle(color: Colors.red))
+                                    ],
+                                  ),
+                                  
+                                )
