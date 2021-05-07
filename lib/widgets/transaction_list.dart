@@ -11,7 +11,7 @@ class TransactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     var trans = List.generate(transactions.length, (index) => 
                   Card(
-                    elevation: 6,
+                    elevation: 6,          
                     child: ListTile(
                       title: Text(
                         transactions[index].title,
@@ -40,9 +40,11 @@ class TransactionList extends StatelessWidget {
            style: Theme.of(context).textTheme.title,
            ),
           Image.asset('assets/images/waiting.png'),
-       ]);
-       } 
-     else {return SingleChildScrollView(child: Column(children: trans));}
+        ]);
+      } 
+     else {
+       return SingleChildScrollView(child: Column(children: trans));
+      }
   }
 }
 

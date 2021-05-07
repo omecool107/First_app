@@ -1,26 +1,51 @@
-var trans = List.generate(transactions.length, (index) => 
-              Card(
-                child: Row(                    
-                    children: <Widget>[
-                        ListTile(
-                          title: Text(transactions[index].title),
-                          leading: CircleAvatar(
-                              radius: 20, 
-                              child: Text('\$${transactions[index].amount.toStringAsFixed(2)}'),
-                          ),
-                          trailing: Text(DateFormat.yMMMMEEEEd().format(transactions[index].date),
-                                      style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.grey,
-                                    )
-                          ),
-                        ),
-                    ]
-                ),
-              )
-            );
-
-
+ Transaction(
+      id: 'T1', 
+      title: 'New Jacket',
+      amount: 42.69,
+      date: DateTime.now()
+      ),
+    Transaction(
+      id: 'T3', 
+      title: 'New Boots',
+      amount: 77.49,
+      date: DateTime.now()
+      ),
+      Transaction(
+      id: 'T4', 
+      title: 'New Jacket',
+      amount: 42.69,
+      date: DateTime.now()
+      ),
+    Transaction(
+      id: 'T5', 
+      title: 'New Boots',
+      amount: 77.49,
+      date: DateTime.now()
+      ),
+      Transaction(
+      id: 'T6', 
+      title: 'New Jacket',
+      amount: 42.69,
+      date: DateTime.now()
+      ),
+    Transaction(
+      id: 'T7', 
+      title: 'New Boots',
+      amount: 77.49,
+      date: DateTime.now()
+      ),
+      Transaction(
+      id: 'T7', 
+      title: 'New Jacket',
+      amount: 42.69,
+      date: DateTime.now()
+      ),
+    Transaction(
+      id: 'T8', 
+      title: 'New Boots',
+      amount: 77.49,
+      date: DateTime.now()
+      ),
 Card(
     child: SingleChildScrollView(
         child: Row(
@@ -75,3 +100,28 @@ Card(
                   ],),
                 ),
               ),
+ (showChart == true)
+Container(
+              height: 
+                 mediaQuery.orientation == Orientation.portrait ?  
+                (trueHeight * 0.22) : 
+                (trueHeight * 0.45),
+              child: Chart(recentTransactions)
+              ),
+            Container(
+              height: 
+              usertransactions.length == 0 ?
+                Image.asset('assets/images/waiting.png').height : 
+                (mediaQuery.orientation == Orientation.portrait ?  
+                (trueHeight * 0.72) : 
+                (trueHeight * 0.55)) ,
+              child: TransactionList(usertransactions, deleteTransaction)
+              ),
+
+  // WidgetsFlutterBinding.ensureInitialized();
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitUp,
+  //   DeviceOrientation.portraitDown,
+  //   DeviceOrientation.landscapeLeft,
+  //   DeviceOrientation.landscapeRight,
+  // ]);

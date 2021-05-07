@@ -29,9 +29,15 @@ class Chart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var mediaQuery = MediaQuery.of(context); 
     return Card(
       elevation: 6,
-      margin: EdgeInsets.all(15),
+      margin: EdgeInsets.only(
+        top: mediaQuery.orientation == Orientation.portrait ? 15 : 0,
+        left: mediaQuery.orientation == Orientation.portrait ? 15 : 100,
+        right: mediaQuery.orientation == Orientation.portrait ? 15 : 100,
+        bottom: 10,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: groupTransactionsValues.map((data){
