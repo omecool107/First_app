@@ -176,7 +176,7 @@ class _MyHomePageState extends State<MyHomePage> {
     
     var body = Column(children: <Widget>[]);
     
-    if (mediaQuery.orientation == Orientation.portrait){      
+    if (mediaQuery.orientation == Orientation.portrait || Platform.isWindows ){      
       body.children.add(chartContainer);
       body.children.add(listContainer);
     }else{
